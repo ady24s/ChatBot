@@ -3,6 +3,7 @@ import "./App.css"; // Ensure that your App.css doesn't contain any background i
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
 
+
 function App() {
   const [chatHistory, setChatHistory] = useState([]);
   const [question, setQuestion] = useState("");
@@ -30,7 +31,7 @@ function App() {
     
     try {
       const response = await axios({
-        url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyCIWixRP3WRplm8oRe5PRCn7B_jwelqKgQ",
+        url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${process.env.REACT_APP_API_KEY}",
         method: "post",
         data: {
           contents: [{ parts: [{ text: question }] }],
